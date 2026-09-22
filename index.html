@@ -228,6 +228,9 @@
       .thumbs {
         width: 100%; height: 78px;
         overflow-y: hidden; overflow-x: auto;
+        overflow-scrolling: touch;
+        -webkit-overflow-scrolling: touch;
+        touch-action: pan-x;
         display: flex; gap: 5px;
         padding: 6px 8px;
         border-left: 0;
@@ -367,8 +370,13 @@
     });
 
     let touchStartX = 0;
-    document.addEventListener("touchstart", function(e) { touchStartX = e.touches[0].clientX; }, { passive: true });
+    let touchInThumbs = false;
+    document.addEventListener("touchstart", function(e) {
+      touchStartX = e.touches[0].clientX;
+      touchInThumbs = !!e.target.closest(".thumbs");
+    }, { passive: true });
     document.addEventListener("touchend", function(e) {
+      if (touchInThumbs) return; // no navegar al deslizar la galería inferior
       const dx = e.changedTouches[0].clientX - touchStartX;
       if (Math.abs(dx) > 50) {
         if (dx > 0) go(current - 1);
