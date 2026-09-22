@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Iconic Essence — Vista Canva (comparación)</title>
+  <link rel="icon" type="image/x-icon" href="/favicon.ico?v=2">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=2">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png?v=2">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=2">
+  <meta name="theme-color" content="#1a1a1a">
+  <style>
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; height: 100%; width: 100%; overflow: hidden; }
+    body {
+      background: #0a0a0a;
+      color: #fff;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      display: flex;
+      flex-direction: column;
+    }
+    .nav {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 10px 16px;
+      background: rgba(0,0,0,0.6);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      backdrop-filter: blur(8px);
+      flex-shrink: 0;
+      gap: 12px;
+    }
+    .nav a {
+      color: #7dd3fc;
+      text-decoration: none;
+      padding: 6px 12px;
+      border: 1px solid rgba(125,211,252,0.4);
+      border-radius: 999px;
+      font-size: 13px;
+      transition: background 0.2s;
+      white-space: nowrap;
+    }
+    .nav a:hover { background: rgba(125,211,252,0.15); }
+    .nav .label {
+      font-size: 12px;
+      opacity: 0.7;
+      flex: 1;
+      text-align: right;
+    }
+    .brand {
+      display: flex; align-items: center; gap: 8px;
+      font-weight: 700; letter-spacing: 0.05em; font-size: 13px;
+    }
+    .brand-mark {
+      width: 26px; height: 26px; border-radius: 5px;
+      background: linear-gradient(135deg, #c084fc, #ec4899);
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 800; color: #fff; font-size: 11px;
+      box-shadow: 0 0 14px rgba(192,132,252,0.5);
+    }
+    iframe {
+      flex: 1;
+      width: 100%;
+      border: 0;
+      background: #fff;
+    }
+    @media (max-width: 700px) {
+      .nav { flex-wrap: wrap; }
+      .nav .label { width: 100%; text-align: left; order: 3; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <a href="/">← Volver al visor HTML</a>
+    <div class="brand">
+      <div class="brand-mark">IE</div>
+      <span>ICONIC ESSENCE</span>
+    </div>
+    <div class="label">Vista con embed de Canva (incluye los “Click Aquí” originales)</div>
+  </nav>
+  <iframe
+    src="https://www.canva.com/design/DAHV8YD1gv0/4wWSyVAMu4OByE8qQwY1qQ/view?embed&hideEmbedBottomBar=true"
+    allowfullscreen
+    referrerpolicy="no-referrer-when-downgrade"
+    title="Catálogo Iconic Essence — vista Canva"
+  ></iframe>
+</body>
+</html>
