@@ -5,12 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Iconic Essence — Catálogo de perfumes</title>
   <meta name="description" content="Catálogo de perfumes Iconic Essence. Edición 2026.">
-  <link rel="icon" type="image/x-icon" href="/favicon.ico?v=2">
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=2">
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png?v=2">
-  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png?v=2">
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=2">
-  <link rel="shortcut icon" href="/favicon.ico?v=2">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico?v=3">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=3">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png?v=3">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png?v=3">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=3">
+  <link rel="shortcut icon" href="/favicon.ico?v=3">
   <meta name="theme-color" content="#1a1a1a">
   <style>
     * { box-sizing: border-box; }
@@ -22,19 +22,21 @@
       display: flex;
       flex-direction: column;
     }
+
+    /* Header */
     .header {
       display: flex; align-items: center; justify-content: space-between;
-      padding: 12px 20px;
+      padding: 10px 16px;
       background: rgba(0,0,0,0.55);
       border-bottom: 1px solid rgba(255,255,255,0.08);
       z-index: 10;
       backdrop-filter: blur(8px);
       flex-shrink: 0;
     }
-    .brand { display: flex; align-items: center; gap: 12px; font-weight: 700; letter-spacing: 0.05em; font-size: 14px; }
+    .brand { display: flex; align-items: center; gap: 10px; font-weight: 700; letter-spacing: 0.05em; font-size: 13px; }
     .brand-mark {
-      height: 38px; width: auto;
-      padding: 4px 10px;
+      height: 34px; width: auto;
+      padding: 4px 8px;
       border-radius: 10px;
       background: rgba(255, 255, 255, 0.06);
       backdrop-filter: blur(14px) saturate(180%);
@@ -45,11 +47,12 @@
         inset 0 -1px 0 rgba(192, 132, 252, 0.12),
         0 4px 18px rgba(192, 132, 252, 0.35);
     }
-    .info { display: flex; gap: 18px; font-size: 13px; opacity: 0.9; }
-    .info a { color: #7dd3fc; text-decoration: none; }
+    .info { display: flex; gap: 14px; font-size: 12px; opacity: 0.9; }
+    .info a { color: #7dd3fc; text-decoration: none; white-space: nowrap; }
     .info a:hover { text-decoration: underline; }
     @media (max-width: 700px) { .info { display: none; } }
 
+    /* Stage + main image + thumbnails */
     .stage { flex: 1; display: flex; min-height: 0; }
     .main {
       flex: 1;
@@ -58,7 +61,7 @@
       justify-content: center;
       position: relative;
       overflow: hidden;
-      padding: 16px;
+      padding: 14px;
     }
     .main img {
       max-width: 100%;
@@ -70,33 +73,31 @@
     }
     .nav-btn {
       position: absolute; top: 50%; transform: translateY(-50%);
-      background: rgba(0,0,0,0.6); color: #fff;
-      border: 1px solid rgba(255,255,255,0.15);
-      font-size: 28px; width: 56px; height: 56px;
+      background: rgba(0,0,0,0.55); color: #fff;
+      border: 1px solid rgba(255,255,255,0.18);
+      font-size: 26px; width: 48px; height: 48px;
       border-radius: 50%; cursor: pointer;
       display: flex; align-items: center; justify-content: center;
       transition: background 0.2s, transform 0.1s;
       backdrop-filter: blur(8px);
+      z-index: 5;
     }
     .nav-btn:hover { background: rgba(125,211,252,0.3); }
     .nav-btn:active { transform: translateY(-50%) scale(0.92); }
-    .nav-prev { left: 16px; } .nav-next { right: 16px; }
-    @media (max-width: 700px) {
-      .nav-btn { width: 44px; height: 44px; font-size: 22px; }
-      .nav-prev { left: 8px; } .nav-next { right: 8px; }
-    }
+    .nav-prev { left: 14px; } .nav-next { right: 14px; }
+
+    /* Counter */
     .counter {
-      position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%);
-      background: rgba(0,0,0,0.7);
-      padding: 6px 16px; border-radius: 20px;
-      font-size: 13px; font-variant-numeric: tabular-nums;
+      position: absolute; bottom: 14px; left: 50%; transform: translateX(-50%);
+      background: rgba(0,0,0,0.75);
+      padding: 5px 14px; border-radius: 20px;
+      font-size: 12px; font-variant-numeric: tabular-nums;
       backdrop-filter: blur(8px);
+      z-index: 5;
     }
-    .hotspots {
-      position: absolute;
-      inset: 16px;
-      pointer-events: none;
-    }
+
+    /* Hotspots */
+    .hotspots { position: absolute; inset: 14px; pointer-events: none; z-index: 4; }
     .hotspot {
       position: absolute;
       pointer-events: auto;
@@ -149,38 +150,93 @@
       70%  { box-shadow: 0 0 0 18px rgba(125,211,252,0); transform: scale(1.05); }
       100% { box-shadow: 0 0 0 0   rgba(125,211,252,0); transform: scale(1); }
     }
+
+    /* Thumbnail sidebar */
     .thumbs {
-      width: 140px;
+      width: 130px;
       background: rgba(0,0,0,0.3);
       overflow-y: auto; overflow-x: hidden;
-      padding: 10px;
+      padding: 8px;
       border-left: 1px solid rgba(255,255,255,0.05);
       flex-shrink: 0;
     }
     .thumbs::-webkit-scrollbar { width: 6px; }
-    .thumbs::-webkit-scrollbar-track { background: transparent; }
     .thumbs::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); border-radius: 3px; }
     .thumbs img {
       width: 100%; cursor: pointer; opacity: 0.5;
       transition: opacity 0.2s, outline-color 0.2s;
-      margin-bottom: 8px; border-radius: 4px;
+      margin-bottom: 6px; border-radius: 4px;
       background: #000; outline: 2px solid transparent;
       display: block;
     }
     .thumbs img:hover { opacity: 0.85; }
     .thumbs img.active { opacity: 1; outline-color: #7dd3fc; }
+
+    /* Floating WhatsApp button — always visible */
+    .fab-whatsapp {
+      position: fixed;
+      bottom: 22px;
+      right: 22px;
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: #25d366;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 100;
+      box-shadow:
+        0 6px 22px rgba(37, 211, 102, 0.55),
+        0 2px 6px rgba(0, 0, 0, 0.3);
+      transition: transform 0.18s, box-shadow 0.18s;
+      text-decoration: none;
+    }
+    .fab-whatsapp:hover {
+      transform: scale(1.08);
+      box-shadow:
+        0 10px 28px rgba(37, 211, 102, 0.75),
+        0 2px 6px rgba(0, 0, 0, 0.3);
+    }
+    .fab-whatsapp:active { transform: scale(0.95); }
+    .fab-whatsapp svg { width: 28px; height: 28px; fill: white; display: block; }
+    /* Subtle pulse ring */
+    .fab-whatsapp::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.6);
+      animation: fab-pulse 2.4s ease-out infinite;
+      pointer-events: none;
+    }
+    @keyframes fab-pulse {
+      0%   { box-shadow: 0 0 0 0   rgba(37, 211, 102, 0.55); }
+      70%  { box-shadow: 0 0 0 18px rgba(37, 211, 102, 0); }
+      100% { box-shadow: 0 0 0 0   rgba(37, 211, 102, 0); }
+    }
+
+    /* MOBILE */
     @media (max-width: 700px) {
       .stage { flex-direction: column; }
+      .main { padding: 8px; }
+      .nav-btn {
+        width: 36px; height: 36px; font-size: 18px;
+        background: rgba(0,0,0,0.35);
+      }
+      .nav-prev { left: 4px; } .nav-next { right: 4px; }
+      .counter { bottom: 10px; font-size: 11px; padding: 4px 12px; }
       .thumbs {
-        width: 100%; height: 88px;
+        width: 100%; height: 78px;
         overflow-y: hidden; overflow-x: auto;
-        display: flex; gap: 6px;
-        padding: 6px 10px;
+        display: flex; gap: 5px;
+        padding: 6px 8px;
         border-left: 0;
         border-top: 1px solid rgba(255,255,255,0.05);
         order: 2;
       }
-      .thumbs img { width: 56px; margin-bottom: 0; flex-shrink: 0; }
+      .thumbs img { width: 50px; margin-bottom: 0; flex-shrink: 0; }
+      .fab-whatsapp { bottom: 14px; right: 14px; width: 46px; height: 46px; }
+      .fab-whatsapp svg { width: 24px; height: 24px; }
     }
   </style>
 </head>
@@ -204,24 +260,24 @@
       <div class="counter"><span id="current">1</span> / 91</div>
 
       <div class="hotspots" id="hotspots">
-        <!-- Portada: Click Aquí -> WhatsApp -->
+        <!-- Portada: Click Aquí (sobre el area del numero WhatsApp) -> WhatsApp con mensaje completo -->
         <a class="hotspot" data-pages="1"
-           style="top: 60%; left: 32%; width: 36%; height: 22%;"
-           href="https://wa.me/573102501227?text=Hola%20Iconic%20Essence%2C%20me%20interesa%20el%20cat%C3%A1logo"
+           style="top: 56%; left: 28%; width: 44%; height: 22%;"
+           href="https://wa.me/573102501227?text=Hola+%F0%9F%91%8B+Estoy+interesado%2Fa+en+conocer+m%C3%A1s+sobre+los+productos+de+ICONIC+ESSENCE.+%C2%BFMe+podr%C3%ADan+compartir+informaci%C3%B3n+sobre+los+perfumes+disponibles%2C+precios+y+env%C3%ADos%3F+Muchas+gracias+%F0%9F%92%9C&utm_source=chatgpt.com"
            target="_blank" rel="noopener">
           <span class="hint">💬 Abrir WhatsApp</span>
           <span class="pulse" style="top: -6px; right: -6px;"></span>
         </a>
         <!-- Portada: @iconic_essence3 -> Instagram -->
         <a class="hotspot" data-pages="1"
-           style="top: 50%; left: 36%; width: 28%; height: 10%;"
+           style="top: 45%; left: 32%; width: 36%; height: 12%;"
            href="https://instagram.com/iconic_essence3" target="_blank" rel="noopener">
           <span class="hint">📸 Abrir Instagram</span>
         </a>
-        <!-- Última página: Click Aquí -> WhatsApp (asumiendo mismo CTA, ajustar si es distinto) -->
+        <!-- Última página: Click Aquí -> WhatsApp -->
         <a class="hotspot" data-pages="91"
-           style="top: 78%; left: 30%; width: 40%; height: 14%;"
-           href="https://wa.me/573102501227?text=Hola%20Iconic%20Essence%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n"
+           style="top: 72%; left: 28%; width: 44%; height: 18%;"
+           href="https://wa.me/573102501227?text=Hola+%F0%9F%91%8B+Estoy+interesado%2Fa+en+conocer+m%C3%A1s+sobre+los+productos+de+ICONIC+ESSENCE.+%C2%BFMe+podr%C3%ADan+compartir+informaci%C3%B3n+sobre+los+perfumes+disponibles%2C+precios+y+env%C3%ADos%3F+Muchas+gracias+%F0%9F%92%9C&utm_source=chatgpt.com"
            target="_blank" rel="noopener">
           <span class="hint">💬 Abrir WhatsApp</span>
           <span class="pulse" style="top: -6px; right: -6px;"></span>
@@ -230,6 +286,16 @@
     </main>
     <aside class="thumbs" id="thumbs"></aside>
   </div>
+
+  <!-- Floating WhatsApp button — visible en TODAS las páginas -->
+  <a class="fab-whatsapp"
+     href="https://wa.me/573102501227?text=Hola+%F0%9F%91%8B+Estoy+interesado%2Fa+en+conocer+m%C3%A1s+sobre+los+productos+de+ICONIC+ESSENCE.+%C2%BFMe+podr%C3%ADan+compartir+informaci%C3%B3n+sobre+los+perfumes+disponibles%2C+precios+y+env%C3%ADos%3F+Muchas+gracias+%F0%9F%92%9C&utm_source=chatgpt.com"
+     target="_blank" rel="noopener"
+     aria-label="Abrir WhatsApp">
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.198-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479c0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/>
+    </svg>
+  </a>
 
   <script>
     const TOTAL = 91;
@@ -268,11 +334,8 @@
       const hotspots = document.querySelectorAll(".hotspot");
       hotspots.forEach(function(h) {
         const pages = (h.dataset.pages || "").split(",").map(function(s) { return parseInt(s.trim(), 10); });
-        if (pages.indexOf(n) !== -1) {
-          h.classList.add("active");
-        } else {
-          h.classList.remove("active");
-        }
+        if (pages.indexOf(n) !== -1) h.classList.add("active");
+        else h.classList.remove("active");
       });
     }
 
