@@ -31,13 +31,12 @@
       backdrop-filter: blur(8px);
       flex-shrink: 0;
     }
-    .brand { display: flex; align-items: center; gap: 10px; font-weight: 700; letter-spacing: 0.05em; font-size: 14px; }
+    .brand { display: flex; align-items: center; gap: 12px; font-weight: 700; letter-spacing: 0.05em; font-size: 14px; }
     .brand-mark {
-      width: 32px; height: 32px; border-radius: 6px;
-      background: linear-gradient(135deg, #c084fc, #ec4899);
-      display: flex; align-items: center; justify-content: center;
-      font-weight: 800; color: #fff; font-size: 13px;
-      box-shadow: 0 0 18px rgba(192,132,252,0.5);
+      height: 36px; width: auto; border-radius: 4px;
+      background: #fff;
+      padding: 2px 6px;
+      box-shadow: 0 0 18px rgba(192,132,252,0.4);
     }
     .info { display: flex; gap: 18px; font-size: 13px; opacity: 0.9; }
     .info a { color: #7dd3fc; text-decoration: none; }
@@ -181,7 +180,7 @@
 <body>
   <header class="header">
     <div class="brand">
-      <div class="brand-mark">IE</div>
+      <img src="/logo.png" alt="Iconic Essence" class="brand-mark">
       <span>ICONIC ESSENCE</span>
     </div>
     <div class="info">
