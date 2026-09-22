@@ -381,15 +381,22 @@
     });
 
     let touchStartX = 0;
+    let touchStartY = 0;
+    let touchStartT = 0;
     let touchInThumbs = false;
     document.addEventListener("touchstart", function(e) {
       touchStartX = e.touches[0].clientX;
+      touchStartY = e.touches[0].clientY;
+      touchStartT = Date.now();
       touchInThumbs = !!e.target.closest(".thumbs");
     }, { passive: true });
     document.addEventListener("touchend", function(e) {
       if (touchInThumbs) return; // no navegar al deslizar la galería inferior
       const dx = e.changedTouches[0].clientX - touchStartX;
-      if (Math.abs(dx) > 50) {
+      const dy = e.changedTouches[0].clientY - touchStartY;
+      const dt = Date.now() - touchStartT;
+      // Swipe real = desplazamiento horizontal > 80px, vertical menor, duración razonable
+      if (Math.abs(dx) > 80 && Math.abs(dx) > Math.abs(dy) * 1.5 && dt < 600) {
         if (dx > 0) go(current - 1);
         else go(current + 1);
       }
