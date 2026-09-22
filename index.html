@@ -183,7 +183,15 @@
       line-height: 0;
     }
 
-    /* Floating WhatsApp button — always visible, pegado a la esquina inferior derecha de la imagen */
+    /* DESKTOP: page-wrap fills the available stage so the FAB anchors to the visible corner */
+    @media (min-width: 701px) {
+      .page-wrap {
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    /* Floating WhatsApp button — always visible, pegado a la esquina inferior derecha */
     .fab-whatsapp {
       position: absolute;
       bottom: 16px;
