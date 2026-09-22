@@ -86,6 +86,63 @@
       font-size: 13px; font-variant-numeric: tabular-nums;
       backdrop-filter: blur(8px);
     }
+    .hotspots {
+      position: absolute;
+      inset: 16px;
+      pointer-events: none;
+    }
+    .hotspot {
+      position: absolute;
+      pointer-events: auto;
+      cursor: pointer;
+      border-radius: 12px;
+      border: 2px solid transparent;
+      box-sizing: border-box;
+      transition: border-color 0.25s, background-color 0.25s, box-shadow 0.25s;
+      background-color: transparent;
+    }
+    .hotspot.active:hover {
+      border-color: rgba(125,211,252,0.85);
+      background-color: rgba(125,211,252,0.12);
+      box-shadow: 0 0 24px rgba(125,211,252,0.4);
+    }
+    .hotspot .hint {
+      position: absolute;
+      bottom: calc(100% + 8px);
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(0,0,0,0.92);
+      color: #fff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 12px;
+      white-space: nowrap;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.2s;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.4);
+    }
+    .hotspot.active:hover .hint { opacity: 1; }
+    .pulse {
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      background: #7dd3fc;
+      border-radius: 50%;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.3s;
+      box-shadow: 0 0 0 0 rgba(125,211,252,0.7);
+    }
+    .hotspot.active:hover .pulse {
+      opacity: 1;
+      animation: pulse 1.4s ease-out infinite;
+    }
+    @keyframes pulse {
+      0%   { box-shadow: 0 0 0 0   rgba(125,211,252,0.7); transform: scale(1); }
+      70%  { box-shadow: 0 0 0 18px rgba(125,211,252,0); transform: scale(1.05); }
+      100% { box-shadow: 0 0 0 0   rgba(125,211,252,0); transform: scale(1); }
+    }
     .thumbs {
       width: 140px;
       background: rgba(0,0,0,0.3);
@@ -140,6 +197,31 @@
       <img id="page" src="/catalog/1.jpg" alt="Página 1 del catálogo">
       <button class="nav-btn nav-next" id="next" aria-label="Siguiente">›</button>
       <div class="counter"><span id="current">1</span> / 91</div>
+
+      <div class="hotspots" id="hotspots">
+        <!-- Portada: Click Aquí -> WhatsApp -->
+        <a class="hotspot" data-pages="1"
+           style="top: 60%; left: 32%; width: 36%; height: 22%;"
+           href="https://wa.me/573102501227?text=Hola%20Iconic%20Essence%2C%20me%20interesa%20el%20cat%C3%A1logo"
+           target="_blank" rel="noopener">
+          <span class="hint">💬 Abrir WhatsApp</span>
+          <span class="pulse" style="top: -6px; right: -6px;"></span>
+        </a>
+        <!-- Portada: @iconic_essence3 -> Instagram -->
+        <a class="hotspot" data-pages="1"
+           style="top: 50%; left: 36%; width: 28%; height: 10%;"
+           href="https://instagram.com/iconic_essence3" target="_blank" rel="noopener">
+          <span class="hint">📸 Abrir Instagram</span>
+        </a>
+        <!-- Última página: Click Aquí -> WhatsApp (asumiendo mismo CTA, ajustar si es distinto) -->
+        <a class="hotspot" data-pages="91"
+           style="top: 78%; left: 30%; width: 40%; height: 14%;"
+           href="https://wa.me/573102501227?text=Hola%20Iconic%20Essence%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n"
+           target="_blank" rel="noopener">
+          <span class="hint">💬 Abrir WhatsApp</span>
+          <span class="pulse" style="top: -6px; right: -6px;"></span>
+        </a>
+      </div>
     </main>
     <aside class="thumbs" id="thumbs"></aside>
   </div>
@@ -172,8 +254,21 @@
         newActive.classList.add("active");
         newActive.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "nearest" });
       }
+      updateHotspots(n);
       preloadImg(n + 1);
       preloadImg(n + 2);
+    }
+
+    function updateHotspots(n) {
+      const hotspots = document.querySelectorAll(".hotspot");
+      hotspots.forEach(function(h) {
+        const pages = (h.dataset.pages || "").split(",").map(function(s) { return parseInt(s.trim(), 10); });
+        if (pages.indexOf(n) !== -1) {
+          h.classList.add("active");
+        } else {
+          h.classList.remove("active");
+        }
+      });
     }
 
     const frag = document.createDocumentFragment();
@@ -207,6 +302,7 @@
 
     const first = thumbsEl.querySelector('img[data-page="1"]');
     if (first) first.classList.add("active");
+    updateHotspots(1);
     preloadImg(2); preloadImg(3);
   </script>
 </body>
